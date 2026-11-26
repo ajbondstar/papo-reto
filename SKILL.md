@@ -1,8 +1,8 @@
 ---
 name: papo-reto
-description: "Português controlado para a comunicação entre o Allan e as IAs, adaptado do ASD-STE100 (inglês técnico simplificado da aviação). Use quando: (1) o Allan pedir para organizar, melhorar ou estruturar um pedido ou prompt dele, (2) um texto em português precisar ficar sem ambiguidade (instrução para agente, prompt de sistema, mensagem de erro, relatório de status, documentação), (3) uma resposta ficar densa, vaga ou difícil de ler, (4) o Allan pedir para transformar texto em tabela, diagrama ou outro formato visual. Gatilhos: papo reto, português claro, deixa claro, tira a ambiguidade, organiza meu pedido, melhora meu prompt, transforma em visual, mostra em tabela, mostra em diagrama, STE em português. Não usar em texto criativo, de marketing ou persuasivo."
+description: "Português controlado para a comunicação entre o usuário e as IAs, adaptado do ASD-STE100 (inglês técnico simplificado da aviação). Use quando: (1) o usuário pedir para organizar, melhorar ou estruturar um pedido ou prompt dele, (2) um texto em português precisar ficar sem ambiguidade (instrução para agente, prompt de sistema, mensagem de erro, relatório de status, documentação), (3) uma resposta ficar densa, vaga ou difícil de ler, (4) o usuário pedir para transformar texto em tabela, diagrama ou outro formato visual. Gatilhos: papo reto, português claro, deixa claro, tira a ambiguidade, organiza meu pedido, melhora meu prompt, transforma em visual, mostra em tabela, mostra em diagrama, STE em português. Não usar em texto criativo, de marketing ou persuasivo."
 metadata:
-  version: 0.1.0
+  version: 0.2.0
 ---
 
 # Papo Reto
@@ -13,8 +13,8 @@ A origem é o ASD-STE100, o inglês técnico simplificado da indústria aeroespa
 
 Esta skill aplica a mesma disciplina ao português do Brasil, em duas direções:
 
-- **IA → Allan.** O Allan tem dificuldade de atenção e trabalha em vários projetos. Cada frase vaga custa a ele uma releitura.
-- **Allan → IA.** O Allan costuma ditar os pedidos. Um pedido ditado mistura objetivo, contexto e ideia solta. A IA precisa separar essas partes antes de agir.
+- **IA → usuário.** O usuário pode ter dificuldade de atenção, como no TDAH, ou trabalhar em vários projetos ao mesmo tempo. Cada frase vaga custa uma releitura.
+- **Usuário → IA.** O usuário muitas vezes dita os pedidos. Um pedido ditado mistura objetivo, contexto e ideia solta. A IA precisa separar essas partes antes de agir.
 
 O ASD-STE100 define só o inglês. As regras abaixo são uma adaptação, não uma norma oficial.
 
@@ -24,13 +24,13 @@ O arquivo de instruções globais do agente define a **forma da resposta**: prim
 
 ## Quatro modos
 
-Escolha o modo pelo que o Allan pediu. Não anuncie o modo.
+Escolha o modo pelo que o usuário pediu. Não anuncie o modo.
 
 | Modo | Quando | Saída |
 |---|---|---|
-| **Pedido** | O Allan pediu para organizar, ou o pedido ditado mistura várias ideias. | 6 campos no topo, depois o trabalho feito e validado. |
+| **Pedido** | O usuário pediu para organizar, ou o pedido ditado mistura várias ideias. | 6 campos no topo, depois o trabalho feito e validado. |
 | **Reescrita** | Um texto em português precisa ficar sem ambiguidade. | Só o texto reescrito. |
-| **Resposta** | Você está respondendo ao Allan. | A resposta, escrita com as regras abaixo. |
+| **Resposta** | Você está respondendo ao usuário. | A resposta, escrita com as regras abaixo. |
 | **Visual** | O conteúdo tem forma de tabela, fluxo ou estado. | Uma linha de conclusão e um visual. |
 
 A Reescrita tem dois níveis:
@@ -71,14 +71,14 @@ Estas regras são mecânicas. Dá para apontar a palavra ou o sinal que quebra c
 | Verbo, não substantivo | "Instale o pacote." | "Faça a instalação do pacote." |
 | Palavra comum | "usar", "fazer", "mostrar" | "utilizar", "efetuar", "exibir" |
 | Sentido literal | "Leia o arquivo." / "Inicie o servidor." | "Dá uma olhada no arquivo." / "Sobe o servidor." |
-| Termo técnico | Mantenha o termo consagrado ("commit", "deploy"). Explique 1 vez se o Allan pode não conhecer. | Trocar o termo no meio do texto. |
+| Termo técnico | Mantenha o termo consagrado ("commit", "deploy"). Explique 1 vez se o usuário pode não conhecer. | Trocar o termo no meio do texto. |
 | Sem adjetivo de venda | "Responde em 200 ms." | "Extremamente rápido e robusto." |
 | Sem muleta | Comece pelo fato. | "Vale ressaltar que", "é importante notar que", "basicamente". |
 | Sem lista aberta | Liste os itens ou diga quantos faltam. | "etc.", "entre outros". |
 
 ## Certeza é conteúdo
 
-Esta é a regra que mais protege o Allan de informação errada.
+Esta é a regra que mais protege o usuário de informação errada.
 
 1. **Preserve a dúvida.** "Pode ter falhado" continua "pode ter falhado". Trocar por "falhou" cria um fato novo.
 2. **Não acrescente fato.** Uma reescrita que inclui causa, frequência ou número que a fonte não deu deixou de ser reescrita.
@@ -102,7 +102,7 @@ A aviação usa fraseologia padrão: cada palavra de rádio tem um único sentid
 | ✅ Feito | Terminou e foi verificado. |
 | 🟡 Feito, não verificado | Terminou. Ninguém testou. |
 | ⬜ Pendente | Ainda não começou. |
-| ⛔ Bloqueado | Depende de uma ação do Allan. Diga qual. |
+| ⛔ Bloqueado | Depende de uma ação do usuário. Diga qual. |
 | ❌ Falhou | Tentou e deu erro. Diga a causa e a correção. |
 
 ## Cotejamento
@@ -113,7 +113,7 @@ Formato, em 1 linha: `Entendi: <objetivo>. Entrego: <o quê>.` Depois execute. N
 
 ## Modo Pedido
 
-Transforme o pedido ditado nestes 6 campos, nesta ordem. Use as palavras do Allan sempre que possível.
+Transforme o pedido ditado nestes 6 campos, nesta ordem. Use as palavras do usuário sempre que possível.
 
 ```
 Objetivo: 1 frase. Começa com verbo no infinitivo.
@@ -126,7 +126,7 @@ Validação: o menor teste que prova o objetivo. Quem executa, como, e o resulta
 
 Regras do modo:
 
-1. Não preencha um campo que o Allan não disse. Escreva `[não dito]`. Exceção: os campos Passos e Validação. A IA sempre preenche esses 2 campos.
+1. Não preencha um campo que o usuário não disse. Escreva `[não dito]`. Exceção: os campos Passos e Validação. A IA sempre preenche esses 2 campos.
 2. Se um campo vazio tem um padrão óbvio, proponha o padrão em vez de perguntar.
 3. Ideia que não faz parte do objetivo vai para uma linha "Para depois:".
 4. Mostre os 6 campos no topo da resposta. Depois execute o trabalho na mesma resposta. Não espere confirmação.
@@ -155,14 +155,14 @@ Escolha o teste mais barato que prova o objetivo, nesta ordem de preferência:
 |---|---|---|
 | 1 | Teste automático que a IA executa | `npm test`, verificador, script |
 | 2 | Comando que a IA executa e lê o resultado | Abrir a página, medir o tempo, ler o log |
-| 3 | Verificação que só o Allan pode fazer | Abrir no celular, olhar o e-mail que chegou |
+| 3 | Verificação que só o usuário pode fazer | Abrir no celular, olhar o e-mail que chegou |
 
 Regras da validação:
 
 1. **A IA executa a validação.** Use o tipo 3 só quando os tipos 1 e 2 não são possíveis.
 2. **Teste o objetivo, não tudo.** Um teste que prova o objetivo vale mais que dez testes de detalhe.
 3. **Compare com o antes.** Se o passo 1 mediu, mostre o número de antes e o de depois.
-4. **Pedido ao Allan com até 2 minutos.** Diga onde abrir, o que fazer e o que ele deve ver. Exemplo: "Abra /agenda no celular. A página deve carregar em menos de 3 s."
+4. **Pedido ao usuário com até 2 minutos.** Diga onde abrir, o que fazer e o que ele deve ver. Exemplo: "Abra /agenda no celular. A página deve carregar em menos de 3 s."
 5. **Relate com o símbolo de estado.** ✅ quando a validação passou. 🟡 quando não foi possível validar, com o motivo. ❌ quando a validação falhou, com a causa e a correção.
 6. **Nunca diga "pronto" sem validação.** Sem teste, o estado é 🟡, não ✅.
 

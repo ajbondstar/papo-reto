@@ -58,14 +58,14 @@ As duas dúvidas da fonte continuam: "pode ter falhado" e "a causa pode ser".
 
 ## Parte 3: Modo Pedido
 
-**O Allan ditou:**
+**O usuário ditou:**
 > Então, eu queria ver aquele negócio do site, sabe, o formulário de contato que tá dando problema, acho que é o e-mail que não chega, e aproveitando, se der, dá uma melhorada no visual do botão também, mas o principal é o e-mail, tem cliente reclamando.
 
 **Saída:**
 
 ```
 Objetivo: Corrigir o formulário de contato do site, que não entrega o e-mail.
-Contexto: Clientes estão reclamando. Causa provável, segundo o Allan: o e-mail não chega.
+Contexto: Clientes estão reclamando. Causa provável, segundo o usuário: o e-mail não chega.
 Entregável: Formulário que envia e-mail para [qual endereço?].
 Limites: [não dito]
 Passos:
@@ -74,7 +74,7 @@ Passos:
   3. Corrigir a causa encontrada no passo 2.
   4. Validar.
 Validação: A IA envia um teste pelo formulário. O log mostra o envio sem erro.
-           O Allan abre a caixa de entrada e vê o e-mail de teste (1 minuto).
+           O usuário abre a caixa de entrada e vê o e-mail de teste (1 minuto).
 
 Para depois: melhorar o visual do botão.
 
@@ -88,9 +88,9 @@ Por que a IA parou aqui: as 2 perguntas mudam o trabalho. Sem o site, ela não s
 Por que os passos estão nesta ordem:
 - O passo 1 mede o antes. Sem o erro atual registrado, a validação não prova a correção.
 - O passo 3 depende da causa que o passo 2 encontra.
-- O botão saiu do objetivo. O Allan disse "se der" e "o principal é o e-mail".
+- O botão saiu do objetivo. O usuário disse "se der" e "o principal é o e-mail".
 
-Por que a validação tem 2 partes: a IA consegue ler o log, mas não consegue ver a caixa de entrada do Allan. A parte do Allan leva 1 minuto.
+Por que a validação tem 2 partes: a IA consegue ler o log, mas não consegue ver a caixa de entrada do usuário. A parte do usuário leva 1 minuto.
 
 **Relato no fim do trabalho:**
 

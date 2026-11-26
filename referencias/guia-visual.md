@@ -42,14 +42,14 @@ Faça estas 3 perguntas, na ordem:
 Use nesta ordem, conforme o que o ambiente oferece:
 
 1. Ferramenta de visual embutida no chat (widget, diagrama, gráfico).
-2. Skill de diagrama instalada, como a `archify`, quando o Allan pedir uma página para guardar ou compartilhar.
+2. Skill de diagrama instalada, como a `archify`, quando o usuário pedir uma página para guardar ou compartilhar.
 3. Tabela Markdown, para comparação e decisão.
 4. Caixas e setas em texto, dentro de um bloco de código.
 
 Exemplo do item 4:
 
 ```
-[Pedido ditado] --> [Modo Pedido] --> [5 campos]
+[Pedido ditado] --> [Modo Pedido] --> [6 campos]
                                           |
                                           v
                                    [Até 3 perguntas]
@@ -60,4 +60,4 @@ Exemplo do item 4:
 - A resposta é 1 fato, 1 comando ou 1 caminho de arquivo.
 - O visual teria só 2 elementos.
 - O conteúdo é um raciocínio em que a ordem dos argumentos importa. Nesse caso use frases curtas e numeradas.
-- O Allan pediu texto para copiar e colar em outro lugar.
+- O usuário pediu texto para copiar e colar em outro lugar.
