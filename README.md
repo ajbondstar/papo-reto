@@ -115,7 +115,7 @@ O verificador nunca marca dúvida ("pode", "talvez") como erro. A dúvida faz pa
 
 ## Autor
 
-**Allan Mendonça** · [@ajbondstar](https://github.com/ajbondstar)
+**Allan Jorge Mendonça** · [@ajbondstar](https://github.com/ajbondstar)
 
 ## Licença
 
