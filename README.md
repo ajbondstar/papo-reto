@@ -166,6 +166,7 @@ Nada. O Papo Reto é gratuito e usa a licença MIT.
 | `scripts/pts-lint.mjs` | O verificador. |
 | `chatgpt/instrucoes-personalizadas.md` | A versão resumida para o ChatGPT. |
 | `CHANGELOG.md` | O histórico de versões. |
+| `CONTRIBUTING.md` | Como contribuir. |
 
 ## Limites
 
