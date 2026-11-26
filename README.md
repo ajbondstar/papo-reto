@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="assets/papo-reto.jpg" alt="Um ratel de óculos escuros com o texto papo-reto" width="320">
+<img src="assets/papo-reto.png" alt="Ratel em estilo cartoon, de óculos escuros, corrente dourada e braços cruzados, com o texto papo-reto" width="320">
 
 # Papo Reto
 
