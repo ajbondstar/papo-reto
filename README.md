@@ -7,6 +7,8 @@
 **A IA fala com você do jeito que um piloto fala com a torre: curto, claro e sem duplo sentido.**
 
 ![Claude Code](https://img.shields.io/badge/Claude_Code-skill-D97757)
+![Codex](https://img.shields.io/badge/Codex-skill-412991)
+![ChatGPT](https://img.shields.io/badge/ChatGPT-instru%C3%A7%C3%B5es-10A37F)
 ![Idioma](https://img.shields.io/badge/idioma-pt--BR-009C3B)
 ![Licença](https://img.shields.io/badge/licen%C3%A7a-MIT-blue)
 ![Dependências](https://img.shields.io/badge/depend%C3%AAncias-zero-brightgreen)
@@ -19,7 +21,7 @@
 
 A IA responde com parágrafos longos, termina com "deve estar funcionando" e mistura o que testou com o que supôs. Você relê três vezes e ainda não sabe o que fazer.
 
-**O Papo Reto corrige isso.** Ele é uma skill do Claude Code com regras de português controlado. A base vem da aviação, onde uma frase lida errado pode derrubar um avião.
+**O Papo Reto corrige isso.** Ele é uma skill de português controlado para o Claude Code e o Codex, com uma versão resumida para o ChatGPT. A base vem da aviação, onde uma frase lida errado pode derrubar um avião.
 
 ## Antes e depois
 
@@ -70,6 +72,23 @@ Abra uma conversa nova. Para ativar numa conversa já aberta, digite `/papo-reto
 
 **claude.ai:** compacte a pasta `papo-reto` em `.zip` e envie em **Configurações → Capacidades → Skills**.
 
+**Codex (OpenAI):**
+
+```powershell
+git clone https://github.com/ajbondstar/papo-reto.git "$env:USERPROFILE\.codex\skills\papo-reto"
+```
+
+Para a skill valer em toda resposta, acrescente ao `AGENTS.md` global (`$env:USERPROFILE\.codex\AGENTS.md`) a linha: "Use a skill `papo-reto` em toda resposta."
+
+**ChatGPT (site e app):** o ChatGPT não lê pastas de skill. Cole a versão resumida de [`chatgpt/instrucoes-personalizadas.md`](chatgpt/instrucoes-personalizadas.md) nas **Instruções personalizadas**.
+
+| Onde | O que entra | Vale em toda conversa? |
+|---|---|---|
+| Claude Code | A skill inteira | Sim, com `CLAUDE.md` ou hook |
+| claude.ai | A skill inteira | Sim, depois de ativada |
+| Codex | A skill inteira | Sim, com `AGENTS.md` |
+| ChatGPT | Um resumo de 10 regras | Sim, pelas Instruções personalizadas |
+
 ## Usar
 
 ```
@@ -106,6 +125,7 @@ O verificador nunca marca dúvida ("pode", "talvez") como erro. A dúvida faz pa
 | `referencias/guia-visual.md` | Quando usar tabela, lista, diagrama ou gráfico. |
 | `exemplos/antes-depois.md` | Exemplos dos 4 modos. |
 | `scripts/pts-lint.mjs` | O verificador. |
+| `chatgpt/instrucoes-personalizadas.md` | A versão resumida para o ChatGPT. |
 
 ## Limites
 

@@ -20,7 +20,7 @@ O ASD-STE100 define só o inglês. As regras abaixo são uma adaptação, não u
 
 ## Relação com outras regras
 
-A skill `i-have-adhd` e o `CLAUDE.md` definem a **forma da resposta**: primeira linha, próxima ação, lista numerada. Esta skill define a **frase, a palavra e o visual**. Se as duas entrarem em conflito, o `CLAUDE.md` vence.
+O arquivo de instruções globais do agente define a **forma da resposta**: primeira linha, próxima ação, lista numerada. No Claude Code, esse arquivo é o `CLAUDE.md`. No Codex, é o `AGENTS.md`. Esta skill define a **frase, a palavra e o visual**. Se os dois entrarem em conflito, o arquivo de instruções globais vence.
 
 ## Quatro modos
 
