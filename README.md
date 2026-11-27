@@ -6,6 +6,7 @@
 
 **A IA fala com você do jeito que um piloto fala com a torre: curto, claro e sem duplo sentido.**
 
+[![Testes](https://github.com/ajbondstar/papo-reto/actions/workflows/testes.yml/badge.svg)](https://github.com/ajbondstar/papo-reto/actions/workflows/testes.yml)
 ![Claude Code](https://img.shields.io/badge/Claude_Code-skill-D97757)
 ![Codex](https://img.shields.io/badge/Codex-skill-412991)
 ![ChatGPT](https://img.shields.io/badge/ChatGPT-instru%C3%A7%C3%B5es-10A37F)
@@ -79,7 +80,38 @@ git clone https://github.com/ajbondstar/papo-reto.git "$env:USERPROFILE\.claude\
 
 Abra uma conversa nova. Para ativar numa conversa já aberta, digite `/papo-reto`.
 
-**claude.ai:** compacte a pasta `papo-reto` em `.zip` e envie em **Configurações → Capacidades → Skills**.
+### Carregar a skill em toda sessão (opcional)
+
+Sem esta etapa, o Claude Code carrega a skill só quando o pedido combina com ela. O hook `hooks/carregar-papo-reto.mjs` coloca a skill no contexto de toda sessão nova.
+
+1. Confirme que o Node.js está instalado: `node --version`.
+2. Abra o arquivo `$env:USERPROFILE\.claude\settings.json`.
+3. Acrescente este bloco dentro de `"hooks"`. Se já existe um `"SessionStart"`, acrescente só o item de dentro.
+
+```json
+"SessionStart": [
+  {
+    "hooks": [
+      {
+        "type": "command",
+        "command": "node \"$HOME/.claude/skills/papo-reto/hooks/carregar-papo-reto.mjs\"",
+        "timeout": 10
+      }
+    ]
+  }
+]
+```
+
+4. Abra uma sessão nova. A IA deve responder com os símbolos de estado (✅ 🟡 ⬜ ⛔ ❌).
+
+## Como instalar no claude.ai e no Claude Desktop (aba Chat)
+
+1. Baixe o `papo-reto.zip` na [última versão](https://github.com/ajbondstar/papo-reto/releases/latest).
+2. Abra **Configurações → Capacidades → Skills**.
+3. Clique em **Enviar skill** e escolha o `.zip`.
+4. Ative a skill e abra uma conversa nova.
+
+A aba Chat não roda hook. Para a skill valer em toda conversa, cole também o texto de [`chatgpt/instrucoes-personalizadas.md`](chatgpt/instrucoes-personalizadas.md) em **Configurações → Perfil → Preferências**.
 
 ## Como instalar no Codex
 
@@ -164,6 +196,7 @@ Nada. O Papo Reto é gratuito e usa a licença MIT.
 | `referencias/guia-visual.md` | Quando usar tabela, lista, diagrama ou gráfico. |
 | `exemplos/antes-depois.md` | Exemplos dos 4 modos. |
 | `scripts/pts-lint.mjs` | O verificador. |
+| `hooks/carregar-papo-reto.mjs` | O hook que carrega a skill em toda sessão do Claude Code. |
 | `chatgpt/instrucoes-personalizadas.md` | A versão resumida para o ChatGPT. |
 | `CHANGELOG.md` | O histórico de versões. |
 | `CONTRIBUTING.md` | Como contribuir. |

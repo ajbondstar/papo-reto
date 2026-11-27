@@ -1,0 +1,28 @@
+name: Testes
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  testes:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Autoteste do verificador
+        run: node scripts/pts-lint.mjs --selftest
+      - name: Hook devolve JSON válido
+        run: |
+          mkdir -p ~/.claude/skills/papo-reto
+          cp SKILL.md ~/.claude/skills/papo-reto/
+          node hooks/carregar-papo-reto.mjs | node -e 'let s="";process.stdin.on("data",d=>s+=d).on("end",()=>{const n=JSON.parse(s).hookSpecificOutput.additionalContext.length;if(n<1000)process.exit(1);console.log(n+" caracteres")})'
+      - name: Descrição do SKILL.md com até 1.024 caracteres
+        run: |
+          node -e 'const t=require("fs").readFileSync("SKILL.md","utf8");const d=(t.match(/^description:\s*(.*)$/m)||[])[1]||"";console.log(d.length+" caracteres");if(!d||d.length>1024)process.exit(1)'
